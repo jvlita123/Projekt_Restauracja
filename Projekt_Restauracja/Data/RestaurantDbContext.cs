@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Projekt_Restauracja;
 
 namespace Projekt_Restauracja.Data
 {
@@ -30,6 +31,10 @@ builder.Entity<CategoryGroup>()
 .WithMany(g => g.CategoryGroups) // jest wiele PersonGroups
 .HasForeignKey(g => g.CategoryId); // a powizanie jest realizowane przez klucz obcy GroupId
 }
+
+        public DbSet<Projekt_Restauracja.Category> Category { get; set; }
+
+        public DbSet<Projekt_Restauracja.CategoryGroup> CategoryGroup { get; set; }
 
 
     }

@@ -9,10 +9,10 @@ namespace Projekt_Restauracja
 
         public int Id { get; set; }
         public int DishId { get; set; } //klucz obcy do Dish
-        public Dish Dish  { get; set; }
+        public Dish Dish { get; set; }
         public int CategoryId { get; set; } //klucz obcy do Category
         public Category Category { get; set; }
 
-
+       
     }
 }

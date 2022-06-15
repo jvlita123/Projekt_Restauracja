@@ -9,8 +9,8 @@ using Projekt_Restauracja.Data;
 namespace Projekt_Restauracja.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    [Migration("20220615084247_Mig2")]
-    partial class Mig2
+    [Migration("20220615124850_MigracjaNowa234")]
+    partial class MigracjaNowa234
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,37 @@ namespace Projekt_Restauracja.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Projekt_Restauracja.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("Projekt_Restauracja.CategoryGroup", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DishId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("CategoryId", "DishId");
+
+                    b.ToTable("CategoryGroup");
+                });
 
             modelBuilder.Entity("Projekt_Restauracja.Dish", b =>
                 {
@@ -70,6 +101,35 @@ namespace Projekt_Restauracja.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Restaurant");
+                });
+
+            modelBuilder.Entity("Projekt_Restauracja.CategoryGroup", b =>
+                {
+                    b.HasOne("Projekt_Restauracja.Category", "Category")
+                        .WithMany("CategoryGroups")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Projekt_Restauracja.Dish", "Dish")
+                        .WithMany("CategoryGroups")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Dish");
+                });
+
+            modelBuilder.Entity("Projekt_Restauracja.Category", b =>
+                {
+                    b.Navigation("CategoryGroups");
+                });
+
+            modelBuilder.Entity("Projekt_Restauracja.Dish", b =>
+                {
+                    b.Navigation("CategoryGroups");
                 });
 #pragma warning restore 612, 618
         }

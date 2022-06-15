@@ -28,7 +28,7 @@ namespace Projekt_Restauracja
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RestaurantDbContext>(options => {
-                options.UseSqlServer(Configuration.GetConnectionString("Restaurant"));
+                options.UseSqlServer(Configuration.GetConnectionString("RestProjekt"));
 
             });
 

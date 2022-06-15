@@ -2,7 +2,7 @@
 
 namespace Projekt_Restauracja.Migrations
 {
-    public partial class InitSchema4 : Migration
+    public partial class MigracjaNowa234 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

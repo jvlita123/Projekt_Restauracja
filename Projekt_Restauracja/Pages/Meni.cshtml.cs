@@ -29,6 +29,7 @@ namespace Projekt_Restauracja.Pages
                 _context.Dish.Add(Dish);
             Dishes = _context.Dish.ToList();
 
+
         }
       
      
