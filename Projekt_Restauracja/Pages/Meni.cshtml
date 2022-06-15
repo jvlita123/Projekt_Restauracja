@@ -1,0 +1,14 @@
+﻿@page
+@model Meni
+@{
+    ViewData["Title"] = "MENU";
+}
+
+@foreach (var item in Model.Dishes)
+{
+    <p>
+        @Html.DisplayFor(modelItem => item.Name)
+        @Html.DisplayFor(modelItem => item.Description)
+        @Html.DisplayFor(modelItem => item.Price)
+    </p>
+}
