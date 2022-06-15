@@ -31,7 +31,7 @@ namespace Projekt_Restauracja.Pages.CategoryGroupDish
 
             CategoryGroup = await _context.CategoryGroup
                 .Include(c => c.Category)
-                .Include(c => c.Dish).FirstOrDefaultAsync(m => m.CategoryId == id);
+                .Include(c => c.Dish).FirstOrDefaultAsync(m => m.DishId == id);
 
             if (CategoryGroup == null)
             {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ namespace Projekt_Restauracja
     public class Dish
     {
 
-        public int Id { get; set; }
+        public int Id { get; set; } 
 
         [Required(ErrorMessage = "Pole jest obowi¹zkowe")]
         [MaxLength(100)]
@@ -28,9 +29,9 @@ namespace Projekt_Restauracja
         [Column(TypeName = "varchar(100)")]
         public string Description { get; set; }
         public string ImgPath { get; set; }
-        public ICollection<CategoryGroup>? CategoryGroups { get; set; }
 
-
+        public virtual ICollection<CategoryGroup>? CategoryGroups { get; set; }
+        public virtual ICollection<Category> Categories { get; set; } 
 
     }
 }

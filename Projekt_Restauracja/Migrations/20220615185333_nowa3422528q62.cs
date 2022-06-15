@@ -2,7 +2,7 @@
 
 namespace Projekt_Restauracja.Migrations
 {
-    public partial class MigracjaNowa24 : Migration
+    public partial class nowa3422528q62 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,12 +56,11 @@ namespace Projekt_Restauracja.Migrations
                 columns: table => new
                 {
                     DishId = table.Column<int>(type: "int", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryGroup", x => new { x.CategoryId, x.DishId });
+                    table.PrimaryKey("PK_CategoryGroup", x => new { x.DishId, x.CategoryId });
                     table.ForeignKey(
                         name: "FK_CategoryGroup_Category_CategoryId",
                         column: x => x.CategoryId,
@@ -69,12 +68,17 @@ namespace Projekt_Restauracja.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoryGroup_Dish_CategoryId",
-                        column: x => x.CategoryId,
+                        name: "FK_CategoryGroup_Dish_DishId",
+                        column: x => x.DishId,
                         principalTable: "Dish",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CategoryGroup_CategoryId",
+                table: "CategoryGroup",
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

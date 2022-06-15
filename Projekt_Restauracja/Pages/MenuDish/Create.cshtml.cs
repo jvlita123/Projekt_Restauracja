@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Projekt_Restauracja;
 using Projekt_Restauracja.Data;
 
-namespace Projekt_Restauracja.Pages.Menu
+namespace Projekt_Restauracja.Pages.MenuDish
 {
     public class CreateModel : PageModel
     {

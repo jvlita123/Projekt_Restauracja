@@ -1,5 +1,5 @@
 ﻿@page
-@model Projekt_Restauracja.Pages.Menu.IndexModel
+@model Projekt_Restauracja.Pages.MenuDish.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -22,6 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Dish[0].Description)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dish[0].ImgPath)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -38,7 +41,9 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-
+                @Html.DisplayFor(modelItem => item.ImgPath)
+            </td>
+            <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>

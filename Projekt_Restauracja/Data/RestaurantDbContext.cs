@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
 using Projekt_Restauracja;
 
 namespace Projekt_Restauracja.Data
@@ -16,25 +12,32 @@ namespace Projekt_Restauracja.Data
         public DbSet<Restaurant> Restaurant { get; set; }
         public DbSet<Dish> Dish { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder); //dodajemy parę kluczy do tabeli pośredniczącej do relacji many to many
-builder.Entity<CategoryGroup>()
-.HasKey(pg => new { pg.CategoryId, pg.DishId});
-            //w tabeli posredniczacej PersonGroup
-            builder.Entity<CategoryGroup>()
-            .HasOne<Dish>(pg => pg.Dish) // dla jednej osoby
-            .WithMany(p => p.CategoryGroups) // jest wiele PersonGroups
-            .HasForeignKey(p => p.CategoryId); // a powizanie jestrealizowane przez klucz obcy PersonId//w tabeli posredniczacej PersonGroup
-builder.Entity<CategoryGroup>()
-.HasOne<Category>(pg => pg.Category) // dla jednej grupy
-.WithMany(g => g.CategoryGroups) // jest wiele PersonGroups
-.HasForeignKey(g => g.CategoryId); // a powizanie jest realizowane przez klucz obcy GroupId
-}
+            base.OnModelCreating(modelBuilder);
 
-        public DbSet<Projekt_Restauracja.Category> Category { get; set; }
+            modelBuilder.Entity<Category>()
+                .HasMany(p => p.Dishes)
+                .WithMany(p => p.Categories)
+                .UsingEntity<CategoryGroup>(
+                    j => j
+                        .HasOne(pt => pt.Dish)
+                        .WithMany(t => t.CategoryGroups)
+                        .HasForeignKey(pt => pt.DishId),
+                    j => j
+                        .HasOne(pt => pt.Category)
+                        .WithMany(p => p.CategoryGroups)
+                        .HasForeignKey(pt => pt.CategoryId),
+                    j =>
+                    {
+                        j.HasKey(t => new { t.DishId, t.CategoryId });
+                    });
+        
+        }
 
         public DbSet<Projekt_Restauracja.CategoryGroup> CategoryGroup { get; set; }
+
+        public DbSet<Projekt_Restauracja.Category> Category { get; set; }
 
 
     }

@@ -1,13 +1,12 @@
 ﻿@page
-@model Projekt_Restauracja.Pages.Menu.DeleteModel
+@model Projekt_Restauracja.Pages.MenuDish.DetailsModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
 }
 
-<h1>Delete</h1>
+<h1>Details</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Dish</h4>
     <hr />
@@ -30,11 +29,15 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Dish.Description)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dish.ImgPath)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dish.ImgPath)
+        </dd>
     </dl>
-    
-    <form method="post">
-        <input type="hidden" asp-for="Dish.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
-    </form>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Dish.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
 </div>

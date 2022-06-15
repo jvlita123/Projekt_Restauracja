@@ -8,18 +8,17 @@ using Microsoft.EntityFrameworkCore;
 using Projekt_Restauracja;
 using Projekt_Restauracja.Data;
 
-namespace Projekt_Restauracja.Pages.Menu
+namespace Projekt_Restauracja.Pages.MenuDish
 {
-    public class DeleteModel : PageModel
+    public class DetailsModel : PageModel
     {
         private readonly Projekt_Restauracja.Data.RestaurantDbContext _context;
 
-        public DeleteModel(Projekt_Restauracja.Data.RestaurantDbContext context)
+        public DetailsModel(Projekt_Restauracja.Data.RestaurantDbContext context)
         {
             _context = context;
         }
 
-        [BindProperty]
         public Dish Dish { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -36,24 +35,6 @@ namespace Projekt_Restauracja.Pages.Menu
                 return NotFound();
             }
             return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Dish = await _context.Dish.FindAsync(id);
-
-            if (Dish != null)
-            {
-                _context.Dish.Remove(Dish);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage("./Index");
         }
     }
 }

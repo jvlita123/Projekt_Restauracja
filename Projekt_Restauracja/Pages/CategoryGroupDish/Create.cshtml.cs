@@ -22,7 +22,7 @@ namespace Projekt_Restauracja.Pages.CategoryGroupDish
         public IActionResult OnGet()
         {
         ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id");
-        ViewData["CategoryId"] = new SelectList(_context.Dish, "Id", "Description");
+        ViewData["DishId"] = new SelectList(_context.Dish, "Id", "Description");
             return Page();
         }
 

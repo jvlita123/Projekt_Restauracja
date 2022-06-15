@@ -32,14 +32,14 @@ namespace Projekt_Restauracja.Pages.CategoryGroupDish
 
             CategoryGroup = await _context.CategoryGroup
                 .Include(c => c.Category)
-                .Include(c => c.Dish).FirstOrDefaultAsync(m => m.CategoryId == id);
+                .Include(c => c.Dish).FirstOrDefaultAsync(m => m.DishId == id);
 
             if (CategoryGroup == null)
             {
                 return NotFound();
             }
            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id");
-           ViewData["CategoryId"] = new SelectList(_context.Dish, "Id", "Description");
+           ViewData["DishId"] = new SelectList(_context.Dish, "Id", "Description");
             return Page();
         }
 
@@ -60,7 +60,7 @@ namespace Projekt_Restauracja.Pages.CategoryGroupDish
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryGroupExists(CategoryGroup.CategoryId))
+                if (!CategoryGroupExists(CategoryGroup.DishId))
                 {
                     return NotFound();
                 }
@@ -75,7 +75,7 @@ namespace Projekt_Restauracja.Pages.CategoryGroupDish
 
         private bool CategoryGroupExists(int id)
         {
-            return _context.CategoryGroup.Any(e => e.CategoryId == id);
+            return _context.CategoryGroup.Any(e => e.DishId == id);
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿@page
-@model Projekt_Restauracja.Pages.Menu.CreateModel
+@model Projekt_Restauracja.Pages.MenuDish.EditModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create</h1>
+<h1>Edit</h1>
 
 <h4>Dish</h4>
 <hr />
@@ -13,6 +13,7 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Dish.Id" />
             <div class="form-group">
                 <label asp-for="Dish.Name" class="control-label"></label>
                 <input asp-for="Dish.Name" class="form-control" />
@@ -29,14 +30,19 @@
                 <span asp-validation-for="Dish.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="Dish.ImgPath" class="control-label"></label>
+                <input asp-for="Dish.ImgPath" class="form-control" />
+                <span asp-validation-for="Dish.ImgPath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -35,16 +35,15 @@ namespace Projekt_Restauracja.Migrations
 
             modelBuilder.Entity("Projekt_Restauracja.CategoryGroup", b =>
                 {
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<int>("DishId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.HasKey("CategoryId", "DishId");
+                    b.HasKey("DishId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("CategoryGroup");
                 });
@@ -111,7 +110,7 @@ namespace Projekt_Restauracja.Migrations
 
                     b.HasOne("Projekt_Restauracja.Dish", "Dish")
                         .WithMany("CategoryGroups")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("DishId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -9,8 +9,8 @@ using Projekt_Restauracja.Data;
 namespace Projekt_Restauracja.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    [Migration("20220615124850_MigracjaNowa234")]
-    partial class MigracjaNowa234
+    [Migration("20220615185333_nowa3422528q62")]
+    partial class nowa3422528q62
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,16 +37,15 @@ namespace Projekt_Restauracja.Migrations
 
             modelBuilder.Entity("Projekt_Restauracja.CategoryGroup", b =>
                 {
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<int>("DishId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.HasKey("CategoryId", "DishId");
+                    b.HasKey("DishId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("CategoryGroup");
                 });
@@ -113,7 +112,7 @@ namespace Projekt_Restauracja.Migrations
 
                     b.HasOne("Projekt_Restauracja.Dish", "Dish")
                         .WithMany("CategoryGroups")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("DishId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -14,9 +14,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryGroup[0].Id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.CategoryGroup[0].Dish)
             </th>
             <th>
@@ -29,16 +26,13 @@
 @foreach (var item in Model.CategoryGroup) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Dish.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.Id)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new { id=item.DishId,item.CategoryId}) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
