@@ -73,7 +73,7 @@ namespace Projekt_Restauracja
 
             app.UseAuthentication();
             app.UseAuthorization();
-            //komentarz
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
