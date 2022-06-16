@@ -52,7 +52,7 @@ namespace Projekt_Restauracja
             return roles;
         }
 
-        private IEnumerable<Restaurant> GetRestaurants() //zwaraca restauracje, które zawsze będą istnieć w tabeli restaurant
+        private IEnumerable<Restaurant>?GetRestaurants() //zwaraca restauracje, które zawsze będą istnieć w tabeli restaurant
         {
             var restaurants = new List<Restaurant>()
             {
@@ -68,12 +68,15 @@ namespace Projekt_Restauracja
                         {
                             Name = "Nashville Hot Chicken",
                             Price = 5.30M,
+                            Description = "Ziemniaczki w ziøach polane sokiem z kukurydz podawane w ciemnym pieczywie z odrobina smalcu w kawie"
+
                         },
 
                           new Dish()
                         {
                             Name = "Chicken Nuggets",
                             Price = 10.30M,
+                            Description = "kurczaczki pieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeczone w kawie"
                         }
                     }
 

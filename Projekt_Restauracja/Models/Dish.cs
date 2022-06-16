@@ -22,7 +22,7 @@ namespace Projekt_Restauracja
 
         public decimal Price { get; set; }
 
-        [Required(ErrorMessage = "Pole jest obowi¹zkowe")]
+      //  [Required(ErrorMessage = "Pole jest obowi¹zkowe")]
         [MinLength(30)]
         [MaxLength(1000)]
         [Display(Name = "Opis dania")]
