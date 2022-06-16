@@ -57,6 +57,7 @@ namespace Projekt_Restauracja.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("varchar(1000)");
 
@@ -71,12 +72,7 @@ namespace Projekt_Restauracja.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal");
 
-                    b.Property<int?>("RestaurantId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RestaurantId");
 
                     b.ToTable("Dish");
                 });
@@ -118,7 +114,7 @@ namespace Projekt_Restauracja.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restaurants");
+                    b.ToTable("Restaurant");
                 });
 
             modelBuilder.Entity("Projekt_Restauracja.User", b =>
@@ -175,13 +171,6 @@ namespace Projekt_Restauracja.Migrations
                     b.Navigation("Dish");
                 });
 
-            modelBuilder.Entity("Projekt_Restauracja.Dish", b =>
-                {
-                    b.HasOne("Projekt_Restauracja.Restaurant", null)
-                        .WithMany("Dishes")
-                        .HasForeignKey("RestaurantId");
-                });
-
             modelBuilder.Entity("Projekt_Restauracja.User", b =>
                 {
                     b.HasOne("Projekt_Restauracja.Models.Role", "Role")
@@ -201,11 +190,6 @@ namespace Projekt_Restauracja.Migrations
             modelBuilder.Entity("Projekt_Restauracja.Dish", b =>
                 {
                     b.Navigation("CategoryGroups");
-                });
-
-            modelBuilder.Entity("Projekt_Restauracja.Restaurant", b =>
-                {
-                    b.Navigation("Dishes");
                 });
 #pragma warning restore 612, 618
         }
