@@ -13,7 +13,6 @@ namespace Projekt_Restauracja
         public bool HasDelivery { get; set; }
         public string ContactEmail { get; set; }
 
-        public virtual List<Dish> Dishes { get; set; }
        
 
     }
