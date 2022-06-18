@@ -1,0 +1,12 @@
+﻿@page
+@model Announcement
+@{
+    ViewData["Title"] = "Ogłoszenia";
+}
+
+@foreach (var item in Model.Announcements)
+{
+    <p>
+        @Html.DisplayFor(modelItem => item.NameOfAnnouncement)
+        @Html.DisplayFor(modelItem => item.Description)
+    </p>}

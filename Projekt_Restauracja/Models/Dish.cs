@@ -10,19 +10,19 @@ namespace Projekt_Restauracja
 
         public int Id { get; set; } 
 
-        [Required(ErrorMessage = "Pole jest obowi¹zkowe")]
+        //[Required(ErrorMessage = "Pole jest obowi¹zkowe")]
         [MaxLength(100)]
         [Display(Name = "Nazwa")]
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Pole jest obowi¹zkowe")]
+       // [Required(ErrorMessage = "Pole jest obowi¹zkowe")]
         [Display(Name = "Cena")]
         [Column(TypeName = "decimal")]
 
         public decimal Price { get; set; }
 
-        [Required(ErrorMessage = "Pole jest obowi¹zkowe")]
+        //[Required(ErrorMessage = "Pole jest obowi¹zkowe")]
         [MinLength(30)]
         [MaxLength(1000)]
         [Display(Name = "Opis dania")]
