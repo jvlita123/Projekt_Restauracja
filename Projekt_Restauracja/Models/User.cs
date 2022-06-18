@@ -22,7 +22,7 @@ namespace Projekt_Restauracja
 
         [Display(Name = "Twoje nazwisko (opcjonalne)")]
         [Column(TypeName = "varchar(100)")]
-        public string? Surname { get; set; }
+        public string Surname { get; set; }
         public string Password { get; set; }
         public string ConfrimPassword { get; set; }
         public int RoleId { get; set; }
