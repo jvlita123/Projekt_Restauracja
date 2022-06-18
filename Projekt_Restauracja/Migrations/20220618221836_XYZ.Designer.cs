@@ -10,8 +10,8 @@ using Projekt_Restauracja.Data;
 namespace Projekt_Restauracja.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    [Migration("20220616111952_UserAndRoleAdd")]
-    partial class UserAndRoleAdd
+    [Migration("20220618221836_XYZ")]
+    partial class XYZ
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,31 @@ namespace Projekt_Restauracja.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Projekt_Restauracja.Announcement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AnnouncementId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
+
+                    b.Property<string>("NameOfAnnouncement")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnnouncementId");
+
+                    b.ToTable("Announcements");
+                });
 
             modelBuilder.Entity("Projekt_Restauracja.Category", b =>
                 {
@@ -59,7 +84,6 @@ namespace Projekt_Restauracja.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("varchar(1000)");
 
@@ -67,14 +91,18 @@ namespace Projekt_Restauracja.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal");
 
+                    b.Property<int?>("RestaurantId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("RestaurantId");
 
                     b.ToTable("Dish");
                 });
@@ -116,7 +144,7 @@ namespace Projekt_Restauracja.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restaurant");
+                    b.ToTable("Restaurants");
                 });
 
             modelBuilder.Entity("Projekt_Restauracja.User", b =>
@@ -126,21 +154,28 @@ namespace Projekt_Restauracja.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ConfrimPassword")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
-                        .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Year")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("email")
@@ -152,6 +187,13 @@ namespace Projekt_Restauracja.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Projekt_Restauracja.Announcement", b =>
+                {
+                    b.HasOne("Projekt_Restauracja.Announcement", null)
+                        .WithMany("Announcements")
+                        .HasForeignKey("AnnouncementId");
                 });
 
             modelBuilder.Entity("Projekt_Restauracja.CategoryGroup", b =>
@@ -173,6 +215,13 @@ namespace Projekt_Restauracja.Migrations
                     b.Navigation("Dish");
                 });
 
+            modelBuilder.Entity("Projekt_Restauracja.Dish", b =>
+                {
+                    b.HasOne("Projekt_Restauracja.Restaurant", null)
+                        .WithMany("Dishes")
+                        .HasForeignKey("RestaurantId");
+                });
+
             modelBuilder.Entity("Projekt_Restauracja.User", b =>
                 {
                     b.HasOne("Projekt_Restauracja.Models.Role", "Role")
@@ -184,6 +233,11 @@ namespace Projekt_Restauracja.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("Projekt_Restauracja.Announcement", b =>
+                {
+                    b.Navigation("Announcements");
+                });
+
             modelBuilder.Entity("Projekt_Restauracja.Category", b =>
                 {
                     b.Navigation("CategoryGroups");
@@ -192,6 +246,11 @@ namespace Projekt_Restauracja.Migrations
             modelBuilder.Entity("Projekt_Restauracja.Dish", b =>
                 {
                     b.Navigation("CategoryGroups");
+                });
+
+            modelBuilder.Entity("Projekt_Restauracja.Restaurant", b =>
+                {
+                    b.Navigation("Dishes");
                 });
 #pragma warning restore 612, 618
         }
