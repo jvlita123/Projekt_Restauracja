@@ -1,15 +1,20 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Projekt_Restauracja;
 using Projekt_Restauracja.Data;
 
 namespace Projekt_Restauracja.Pages.Announcements
 {
     public class CreateModel : PageModel
     {
-        private readonly RestaurantDbContext _context;
+        private readonly Projekt_Restauracja.Data.RestaurantDbContext _context;
 
-        public CreateModel(RestaurantDbContext context)
+        public CreateModel(Projekt_Restauracja.Data.RestaurantDbContext context)
         {
             _context = context;
         }

@@ -12,15 +12,14 @@ namespace Projekt_Restauracja.Pages.Announcements
 {
     public class DetailsModel : PageModel
     {
-        private readonly RestaurantDbContext _context;
+        private readonly Projekt_Restauracja.Data.RestaurantDbContext _context;
 
-        public DetailsModel(RestaurantDbContext context)
+        public DetailsModel(Projekt_Restauracja.Data.RestaurantDbContext context)
         {
             _context = context;
         }
 
         public Announcement Announcement { get; set; }
-
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

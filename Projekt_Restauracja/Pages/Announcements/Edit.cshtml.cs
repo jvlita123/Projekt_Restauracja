@@ -13,9 +13,9 @@ namespace Projekt_Restauracja.Pages.Announcements
 {
     public class EditModel : PageModel
     {
-        private readonly RestaurantDbContext _context;
+        private readonly Projekt_Restauracja.Data.RestaurantDbContext _context;
 
-        public EditModel(RestaurantDbContext context)
+        public EditModel(Projekt_Restauracja.Data.RestaurantDbContext context)
         {
             _context = context;
         }
@@ -56,7 +56,7 @@ namespace Projekt_Restauracja.Pages.Announcements
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(Announcement.Id))
+                if (!AnnouncementExists(Announcement.Id))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace Projekt_Restauracja.Pages.Announcements
             return RedirectToPage("./Index");
         }
 
-        private bool CategoryExists(int id)
+        private bool AnnouncementExists(int id)
         {
             return _context.Announcements.Any(e => e.Id == id);
         }

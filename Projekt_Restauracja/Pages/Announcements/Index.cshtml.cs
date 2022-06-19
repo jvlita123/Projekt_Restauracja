@@ -12,18 +12,18 @@ namespace Projekt_Restauracja.Pages.Announcements
 {
     public class IndexModel : PageModel
     {
-        private readonly RestaurantDbContext _context;
+        private readonly Projekt_Restauracja.Data.RestaurantDbContext _context;
 
-        public IndexModel(RestaurantDbContext context)
+        public IndexModel(Projekt_Restauracja.Data.RestaurantDbContext context)
         {
             _context = context;
         }
 
-        public IList<Announcement> Announcements { get; set; }
+        public IList<Announcement> Announcement { get;set; }
 
         public async Task OnGetAsync()
         {
-            Announcements = await _context.Announcements.ToListAsync();
+            Announcement = await _context.Announcements.ToListAsync();
         }
     }
 }

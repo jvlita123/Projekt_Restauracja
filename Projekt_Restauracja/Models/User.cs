@@ -30,15 +30,6 @@ namespace Projekt_Restauracja
         public virtual Role Role { get; set; }
         public string PasswordHash { get; set; }
 
-        public bool IsAdmin()
-        {
-
-            if (!this.email.StartsWith("Admin@"))
-            {
-                return false;
-            }
-            return true;
-        }
-
+     
     }
 }

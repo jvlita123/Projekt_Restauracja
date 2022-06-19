@@ -12,9 +12,9 @@ namespace Projekt_Restauracja.Pages.Announcements
 {
     public class DeleteModel : PageModel
     {
-        private readonly RestaurantDbContext _context;
+        private readonly Projekt_Restauracja.Data.RestaurantDbContext _context;
 
-        public DeleteModel(RestaurantDbContext context)
+        public DeleteModel(Projekt_Restauracja.Data.RestaurantDbContext context)
         {
             _context = context;
         }

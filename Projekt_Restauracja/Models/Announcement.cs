@@ -18,7 +18,7 @@ namespace Projekt_Restauracja
 
         [MinLength(30)]
         [MaxLength(1000)]
-        [Display(Name = "Opis ogłoszenia")]
+        [Display(Name = "Treść ogłoszenia")]
         [Column(TypeName = "varchar(100)")]
         public string Description { get; set; }
 
