@@ -3,13 +3,30 @@
 @{
     ViewData["Title"] = "MENU";
 }
-
+<head>
+    <style>
+        p{
+            padding: 8px;
+            font-weight: bold;
+        }
+    
+    
+    </style>
+</head>
 @foreach (var item in Model.Dishes)
 {
+    <body>
     <p>
+        <div style="float:left;"> 
         @Html.DisplayFor(modelItem => item.Name)
+        
         @Html.DisplayFor(modelItem => item.Description)
+        </div>
+        <div style="float:right;">
         @Html.DisplayFor(modelItem => item.Price)
+
         @Html.DisplayFor(modelItem => item.Categories.Count)
+        </div>
     </p>
+    </body>
 }
