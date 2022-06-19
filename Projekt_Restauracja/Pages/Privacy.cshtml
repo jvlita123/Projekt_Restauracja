@@ -1,5 +1,63 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Kontakt";
 }
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #0366d6;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #1b6ec2;
+}
+
+</style>
+</head>
+<body>
+
+<h3>Formularz kontaktowy</h3>
+
+<div class="container">
+  <form action="/action_page.php">
+    <label for="fname">Imię</label>
+    <input type="text" id="fname" name="imie" placeholder="Twoje imię..">
+
+    <label for="lname">Nazwisko</label>
+    <input type="text" id="lname" name="nazwisko" placeholder="Twoje nazwisko..">
+
+    <label for="email">Twój adres e-mail</label>
+   <input type="text" id="lname" name="email" placeholder="Twój email..">
+
+    <label for="subject">Temat</label>
+    <textarea id="subject" name="subject" placeholder="Napisz coś.." style="height:100px"></textarea>
+
+    <input type="submit" value="Wyślij">
+  </form>
+</div>
+
+</body>
+</html>

@@ -9,22 +9,22 @@
 
 <div class="alert alert-warning" role="alert">
     <p>
-        <strong>Usunięcie danych spowoduje trwałe usunięcie Twojego konta bez możliwości odzyskania.</strong>
+        <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
     </p>
 </div>
 
 <div>
-    <form id="delete-user" method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form id="delete-user" method="post" class="form-group">
+        <div asp-validation-summary="All" class="text-danger"></div>
         @if (Model.RequirePassword)
         {
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+            <div class="form-group">
+               <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
                 <label asp-for="Input.Password" class="form-label">Hasło</label>
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
         }
-        <button class="w-100 btn btn-lg btn-danger" type="submit">Usuń</button>
+        <button class="btn btn-danger" type="submit">Delete data and close my account</button>
     </form>
 </div>
 
