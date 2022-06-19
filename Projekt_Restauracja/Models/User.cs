@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Projekt_Restauracja.Models;
 using System;
 using System.Collections.Generic;
@@ -6,14 +7,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projekt_Restauracja
 {
-    public class User
+    public class User : IdentityUser
     {
 
         public int Id { get; set; }
         public string email { get; set; }
-
-        public DateTime? DateOfBirth { get; set; }
-
+       
         [Display(Name = "Twój rok urodzenia")]
         [Column(TypeName = "varchar(100)")]
         public int? Year { get; set; }

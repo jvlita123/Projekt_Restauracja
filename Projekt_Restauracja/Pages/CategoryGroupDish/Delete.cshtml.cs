@@ -10,6 +10,7 @@ using Projekt_Restauracja.Data;
 
 namespace Projekt_Restauracja.Pages.CategoryGroupDish
 {
+
     public class DeleteModel : PageModel
     {
         private readonly Projekt_Restauracja.Data.RestaurantDbContext _context;
