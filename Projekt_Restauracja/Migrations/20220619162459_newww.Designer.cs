@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Projekt_Restauracja.Data;
 
 namespace Projekt_Restauracja.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220619162459_newww")]
+    partial class newww
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,13 +199,13 @@ namespace Projekt_Restauracja.Migrations
             modelBuilder.Entity("Projekt_Restauracja.CategoryGroup", b =>
                 {
                     b.HasOne("Projekt_Restauracja.Category", "Category")
-                        .WithMany("categoryGroups")
+                        .WithMany("CategoryGroups")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Projekt_Restauracja.Dish", "Dish")
-                        .WithMany("categoryGroups")
+                        .WithMany("CategoryGroups")
                         .HasForeignKey("DishId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -238,12 +240,12 @@ namespace Projekt_Restauracja.Migrations
 
             modelBuilder.Entity("Projekt_Restauracja.Category", b =>
                 {
-                    b.Navigation("categoryGroups");
+                    b.Navigation("CategoryGroups");
                 });
 
             modelBuilder.Entity("Projekt_Restauracja.Dish", b =>
                 {
-                    b.Navigation("categoryGroups");
+                    b.Navigation("CategoryGroups");
                 });
 
             modelBuilder.Entity("Projekt_Restauracja.Restaurant", b =>

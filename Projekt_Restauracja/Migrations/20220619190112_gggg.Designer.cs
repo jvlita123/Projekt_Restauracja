@@ -3,21 +3,38 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Projekt_Restauracja.Data;
 
 namespace Projekt_Restauracja.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220619190112_gggg")]
+    partial class gggg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CategoryDish", b =>
+                {
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DishesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CategoriesId", "DishesId");
+
+                    b.HasIndex("DishesId");
+
+                    b.ToTable("CategoryDish");
+                });
 
             modelBuilder.Entity("Projekt_Restauracja.Announcement", b =>
                 {
@@ -187,6 +204,21 @@ namespace Projekt_Restauracja.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("CategoryDish", b =>
+                {
+                    b.HasOne("Projekt_Restauracja.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Projekt_Restauracja.Dish", null)
+                        .WithMany()
+                        .HasForeignKey("DishesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Projekt_Restauracja.Announcement", b =>
                 {
                     b.HasOne("Projekt_Restauracja.Announcement", null)
@@ -197,13 +229,13 @@ namespace Projekt_Restauracja.Migrations
             modelBuilder.Entity("Projekt_Restauracja.CategoryGroup", b =>
                 {
                     b.HasOne("Projekt_Restauracja.Category", "Category")
-                        .WithMany("categoryGroups")
+                        .WithMany("CategoryGroups")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Projekt_Restauracja.Dish", "Dish")
-                        .WithMany("categoryGroups")
+                        .WithMany("CategoryGroups")
                         .HasForeignKey("DishId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -238,12 +270,12 @@ namespace Projekt_Restauracja.Migrations
 
             modelBuilder.Entity("Projekt_Restauracja.Category", b =>
                 {
-                    b.Navigation("categoryGroups");
+                    b.Navigation("CategoryGroups");
                 });
 
             modelBuilder.Entity("Projekt_Restauracja.Dish", b =>
                 {
-                    b.Navigation("categoryGroups");
+                    b.Navigation("CategoryGroups");
                 });
 
             modelBuilder.Entity("Projekt_Restauracja.Restaurant", b =>

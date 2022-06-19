@@ -11,6 +11,11 @@
 
   <ItemGroup>
     <Content Remove="Pages\Error - kopiować.cshtml" />
+    <Content Remove="wwwroot\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\logo.png" />
   </ItemGroup>
 
   <ItemGroup>

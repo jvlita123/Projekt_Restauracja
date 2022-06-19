@@ -13,27 +13,24 @@ namespace Projekt_Restauracja.Pages
 {
     public class Meni : PageModel
     {
-        private Data.RestaurantDbContext _context { get; set; }
-        public IList<Dish> Dishes { get; set; }
-        public Dish Dish { get; set; }
+        private readonly IDishService _dishService;
+        public IQueryable<Dish> Records { get; set; }
+        public IQueryable<Category> Category { get; set; }
 
-
-
-        public Meni(Projekt_Restauracja.Data.RestaurantDbContext context)
+        public Meni(IDishService dishService)
         {
-            _context = context;
+           
+            _dishService = dishService;
         }
-
         public void OnGet()
         {
-            if (Dishes != null)
-                _context.Dish.Add(Dish);
-            Dishes = _context.Dish.ToList();
+            Category = _dishService.AddCategory();
 
-
+            Records = _dishService.GetDishes();
         }
-      
+    }
+
      
 
-    }
+    
 }

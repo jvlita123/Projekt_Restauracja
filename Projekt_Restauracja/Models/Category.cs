@@ -12,9 +12,8 @@ namespace Projekt_Restauracja
         [Display(Name = "Kategoria")]
 
         public string Name { get; set; }
+        public ICollection<CategoryGroup>? categoryGroups { get; set; }
 
-        public virtual ICollection<CategoryGroup>? CategoryGroups { get; set; } 
-        public virtual ICollection<Dish> Dishes { get; set; } 
 
 
 

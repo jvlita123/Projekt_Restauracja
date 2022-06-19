@@ -4,12 +4,15 @@
     ViewData["Title"] = "MENU";
 }
 
-@foreach (var item in Model.Dishes)
-{
+<div class="text-center">
     <p>
-        @Html.DisplayFor(modelItem => item.Name)
-        @Html.DisplayFor(modelItem => item.Description)
-        @Html.DisplayFor(modelItem => item.Price)
-        @Html.DisplayFor(modelItem => item.Categories.Count)
+        W bazie jest @Model.Records.Count() dań. Lista
+        dań:
     </p>
-}
+    @foreach (var item in Model.Records)
+    {
+        <p>@item.Name @item.Price </p>
+    }
+
+
+</div>

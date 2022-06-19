@@ -30,8 +30,8 @@ namespace Projekt_Restauracja
         public string Description { get; set; }
         public string ImgPath { get; set; }
 
-        public virtual ICollection<CategoryGroup>? CategoryGroups { get; set; }
-        public virtual ICollection<Category> Categories { get; set; } 
+        public ICollection<CategoryGroup>? categoryGroups { get; set; }
+
 
     }
 }

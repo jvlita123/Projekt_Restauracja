@@ -31,22 +31,17 @@ namespace Projekt_Restauracja.Data
 
 
 
-            modelBuilder.Entity<Category>()
-                .HasMany(p => p.Dishes)
-                .WithMany(p => p.Categories)
-                .UsingEntity<CategoryGroup>(
-                    j => j
-                        .HasOne(pt => pt.Dish)
-                        .WithMany(t => t.CategoryGroups)
-                        .HasForeignKey(pt => pt.DishId),
-                    j => j
-                        .HasOne(pt => pt.Category)
-                        .WithMany(p => p.CategoryGroups)
-                        .HasForeignKey(pt => pt.CategoryId),
-                    j =>
-                    {
-                        j.HasKey(t => new { t.DishId, t.CategoryId });
-                    });
+            modelBuilder.Entity<CategoryGroup>()
+                .HasKey(pg => new { pg.DishId, pg.CategoryId });
+            modelBuilder.Entity<CategoryGroup>()
+                .HasOne<Dish>(pg => pg.Dish)
+                .WithMany(p => p.categoryGroups)
+                .HasForeignKey(p => p.DishId);
+
+            modelBuilder.Entity<CategoryGroup>()
+                .HasOne<Category>(pg => pg.Category)
+                .WithMany(g => g.categoryGroups)
+                .HasForeignKey(g => g.CategoryId);
 
         }
 
