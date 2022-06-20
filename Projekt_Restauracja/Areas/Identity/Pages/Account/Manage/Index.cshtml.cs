@@ -47,12 +47,17 @@ namespace Projekt_Restauracja.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-
+            var name = await _userManager.GetUserNameAsync(user);
+            var surname = await _userManager.GetUserNameAsync(user);
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                Username = userName,
+                FirstName = name,
+                LastName = surname,
+
             };
         }
 
