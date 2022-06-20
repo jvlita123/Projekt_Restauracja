@@ -22,6 +22,5 @@ namespace Projekt_Restauracja
         [Column(TypeName = "varchar(100)")]
         public string Description { get; set; }
 
-        public virtual List<Announcement> Announcements { get; set; }
     }
 }

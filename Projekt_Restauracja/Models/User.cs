@@ -26,7 +26,7 @@ namespace Projekt_Restauracja
         public string ConfrimPassword { get; set; }
         public int RoleId { get; set; }
 
-        public virtual Role Role { get; set; }
+        public virtual IdentityRole Role { get; set; }
         public string PasswordHash { get; set; }
 
      

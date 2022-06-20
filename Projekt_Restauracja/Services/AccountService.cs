@@ -21,9 +21,10 @@ namespace Projekt_Restauracja.Services
         public void RegisterUser(User user)
         {
             var newUser = new User()
-            { 
+            {
                 email = user.email,
                 Year = user.Year,
+                Role = new IdentityRole("Admin"),
                 RoleId = user.RoleId,
 
             };

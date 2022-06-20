@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Projekt_Restauracja;
 using Projekt_Restauracja.Data;
 
-namespace Projekt_Restauracja.Pages.Announcements
+namespace Projekt_Restauracja.Pages.Resra
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace Projekt_Restauracja.Pages.Announcements
         }
 
         [BindProperty]
-        public Announcement Announcement { get; set; }
+        public Restaurant Restaurant { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,9 +30,9 @@ namespace Projekt_Restauracja.Pages.Announcements
                 return NotFound();
             }
 
-            Announcement = await _context.Announcements.FirstOrDefaultAsync(m => m.Id == id);
+            Restaurant = await _context.Restaurants.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Announcement == null)
+            if (Restaurant == null)
             {
                 return NotFound();
             }
@@ -48,7 +48,7 @@ namespace Projekt_Restauracja.Pages.Announcements
                 return Page();
             }
 
-            _context.Attach(Announcement).State = EntityState.Modified;
+            _context.Attach(Restaurant).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace Projekt_Restauracja.Pages.Announcements
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AnnouncementExists(Announcement.Id))
+                if (!RestaurantExists(Restaurant.Id))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace Projekt_Restauracja.Pages.Announcements
             return RedirectToPage("./Index");
         }
 
-        private bool AnnouncementExists(int id)
+        private bool RestaurantExists(int id)
         {
-            return _context.Announcements.Any(e => e.Id == id);
+            return _context.Restaurants.Any(e => e.Id == id);
         }
     }
 }

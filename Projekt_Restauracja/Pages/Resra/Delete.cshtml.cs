@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Projekt_Restauracja;
 using Projekt_Restauracja.Data;
 
-namespace Projekt_Restauracja.Pages.Announcements
+namespace Projekt_Restauracja.Pages.Resra
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace Projekt_Restauracja.Pages.Announcements
         }
 
         [BindProperty]
-        public Announcement Announcement { get; set; }
+        public Restaurant Restaurant { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace Projekt_Restauracja.Pages.Announcements
                 return NotFound();
             }
 
-            Announcement = await _context.Announcements.FirstOrDefaultAsync(m => m.Id == id);
+            Restaurant = await _context.Restaurants.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Announcement == null)
+            if (Restaurant == null)
             {
                 return NotFound();
             }
@@ -45,11 +45,11 @@ namespace Projekt_Restauracja.Pages.Announcements
                 return NotFound();
             }
 
-            Announcement = await _context.Announcements.FindAsync(id);
+            Restaurant = await _context.Restaurants.FindAsync(id);
 
-            if (Announcement != null)
+            if (Restaurant != null)
             {
-                _context.Announcements.Remove(Announcement);
+                _context.Restaurants.Remove(Restaurant);
                 await _context.SaveChangesAsync();
             }
 

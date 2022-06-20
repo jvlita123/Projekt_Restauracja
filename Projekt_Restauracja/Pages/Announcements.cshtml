@@ -1,0 +1,20 @@
+﻿@page
+@model Announcements
+@{
+    ViewData["Title"] = "MENU";
+}
+
+<div class="text-left">
+    <h1 >ogłoszenia</h1>
+
+</div>
+    </p>
+    @foreach (var item in Model.Records)
+    {
+        <strong>@item.NameOfAnnouncement</strong><br>
+        <p>@item.Description</p>
+        <br />
+    }
+
+
+</div>

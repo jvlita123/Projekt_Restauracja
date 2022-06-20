@@ -58,22 +58,45 @@ namespace Projekt_Restauracja
             {
                 new Restaurant()
                 {
-                    Name = "KFC",
-                    Description = "KFC (short for Kentucky Fried Chicken) is an American fast food restaurant",
-                    ContactEmail = "contact@kfc.com",
+                    Name = "Zagłoba",
+                    Description = "Restauracja Zagłoba to wyjątkowe miejsce ulokowane " +
+                    "w sercu Kamiennej Góry. Na dwóch stylowo urządzonych piętrach " +
+                    "serwujemy szereg klasycznych polskich potraw," +
+                    " które łączą kulinarną wiedzę naszego szefa " +
+                    "kuchni ze świeżymi sezonowymi składnikami. W naszym " +
+                    "menu znajdą państwo dania na każdą okazję, " +
+                    "od specjalnych rocznic po spotkania okolicznościowe lub po" +
+                    " prostu wspaniały obiad z rodziną. Dążymy do tego, aby stworzyć" +
+                    " atrakcyjne wrażenia smakowe dla każdego z naszych gości.",
+
+                    ContactEmail = "contact@Zagloba.com",
                     HasDelivery = true,
                     Dishes = new List<Dish>()
                     {
                         new Dish()
                         {
-                            Name = "Nashville Hot Chicken",
-                            Price = 5.30M,
+                            Name = "Pizza Włoska",
+                            Price = 23,
+                            Description = " potrawa kuchni włoskiej, obecnie szeroko" +
+                            " rozpowszechniona na całym świecie. " +
+                            "Jest to płaski placek z ciasta drożdżowego " +
+                            "(focaccia), z sosem pomidorowym, posypany tartym serem " +
+                            "(najczęściej jest to mozzarella)" +
+                            " i ziołami, pieczony w bardzo mocno nagrzanym piecu. " +
+                            "Pizzę podaje się na gorąco, " +
+                            "lecz rozpowszechnione jest jedzenie jej również na zimno.",                            
                         },
 
                           new Dish()
                         {
-                            Name = "Chicken Nuggets",
-                            Price = 10.30M,
+                            Name = "Espresso",
+                            Price = 13,
+                            Description = "Espresso parzy się zazwyczaj z mieszanek kilku gatunków kaw" +
+                            ". Powstała w ten sposób kawa ma" +
+                            " (po prawidłowym przygotowaniu) gęstą, orzechowobrązową " +
+                            "piankę zwaną z wł. crema. Piance tej espress" +
+                            "o zawdzięcza dużą część swego aromatu. Dzięki krótkiemu czasowi ekstrakcji, ",
+
                         }
                     }
 

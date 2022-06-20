@@ -47,6 +47,7 @@ namespace Projekt_Restauracja
             services.AddScoped<IValidator<User>, RegisterUserValidator>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IAnnouncementsService, AnnouncementsService>();
             services.AddTransient<IDishService,DishService>();
             services.AddRazorPages();
         }

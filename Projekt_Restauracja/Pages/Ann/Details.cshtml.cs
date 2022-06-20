@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Projekt_Restauracja;
 using Projekt_Restauracja.Data;
 
-namespace Projekt_Restauracja.Pages.Announcements
+namespace Projekt_Restauracja.Pages.Ann
 {
     public class DetailsModel : PageModel
     {
