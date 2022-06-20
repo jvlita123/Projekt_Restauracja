@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projekt_Restauracja
 {
-    public class User : IdentityUser
+    public class User //: IdentityUser
     {
 
         public int Id { get; set; }

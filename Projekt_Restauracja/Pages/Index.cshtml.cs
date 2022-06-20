@@ -10,8 +10,11 @@ namespace Projekt_Restauracja.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private readonly IDishService _dishService;
+
         private readonly RestaurantDbContext _context;
         public IList<Dish> Dishes { get; set; }
+        public IList<Restaurant> Restaurants { get; set; }
         public IndexModel(ILogger<IndexModel> logger, RestaurantDbContext context)
         {
             _logger = logger;
@@ -22,6 +25,7 @@ namespace Projekt_Restauracja.Pages
         public void OnGet()
         {
             Dishes = _context.Dish.ToList();
+            Restaurants = _context.Restaurants.ToList();
 
 
         }

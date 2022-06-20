@@ -25,7 +25,6 @@ namespace Projekt_Restauracja.Pages
         public void OnGet()
         {
             Category = _dishService.AddCategory();
-
             Records = _dishService.GetDishes();
         }
     }

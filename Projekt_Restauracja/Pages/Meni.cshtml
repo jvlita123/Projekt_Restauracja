@@ -4,16 +4,41 @@
     ViewData["Title"] = "MENU";
 }
 
-<div class="text-center">
-    <p>
-        W bazie jest @Model.Records.Count() dań. Lista
-        dań:
-        </div>
-    </p>
-    @foreach (var item in Model.Records)
-    {
-        <p>@item.Name @item.Price </p>
-    }
-
+<div class="text-left">
+    <h1>MENU</h1>
 
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p><strong>Nazwa</strong></p>
+            </th>
+            <th>
+                <p><strong>Opis</strong></p>
+            </th>
+            <th>
+                <p><strong>Cena</strong></p>
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Records)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>            
+            </tr>
+        }
+    </tbody>
+</table>

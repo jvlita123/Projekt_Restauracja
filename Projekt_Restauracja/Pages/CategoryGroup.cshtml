@@ -1,0 +1,85 @@
+﻿@page
+@model Projekt_Restauracja.Pages.CategoryGroupDish.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 40%;
+            border-radius: 5px;
+            display: inline;
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+        img {
+            border-radius: 5px 5px 0 0;
+        }
+
+        .container {
+            padding: 2px 16px;
+            display: inline;
+        }
+    </style>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        @foreach (var item in Model.CategoryGroup)
+        {
+
+            <div class="col">
+                <div class="card h-100" style="width: 18rem">
+                    <div class="card-body card-text">
+                        <h5 class="card-title">@item.Category.Name</h5>
+                        <p>
+                            <span class="badge rounded-pill bg-warning">@item.Category.Name</span>
+                        </p>
+                        <a asp-route-id="@item.CategoryId" class="btn btn-primary nav-link text-light">
+                            <img src="~/menu.jpg" alt="menu" style="width:100%">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+
+</head>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryGroup[0].Dish.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryGroup[0].Category.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CategoryGroup)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dish.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
