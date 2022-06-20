@@ -16,6 +16,7 @@ namespace Projekt_Restauracja.Pages
         private readonly IDishService _dishService;
         public IQueryable<Dish> Records { get; set; }
         public IQueryable<Category> Category { get; set; }
+        public string SearchTerm { get; set; } 
 
         public Meni(IDishService dishService)
         {

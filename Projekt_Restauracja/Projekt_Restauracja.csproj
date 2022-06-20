@@ -15,6 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\1.jpg" />
+    <None Include="wwwroot\2.jpg" />
+    <None Include="wwwroot\3.jpg" />
     <None Include="wwwroot\logo.png" />
   </ItemGroup>
 

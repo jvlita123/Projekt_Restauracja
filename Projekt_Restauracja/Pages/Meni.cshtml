@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{searchString?}"
 @model Meni
 @{
     ViewData["Title"] = "MENU";
@@ -15,8 +15,17 @@
 
 <div class="text-left">
     <h1>MENU</h1>
-
+   <form method="get">
+       <div class="input-group">
+           <input class="form-control" asp-for="SearchTerm"/>
+           <div class="input-group-append">
+               <button type="submit" class="btn btn-primary">Wyszukaj</button>
+           </div>
+       </div>
+   </form>
 </div>
+
+
 
 <table class="table">
     <thead>
@@ -38,7 +47,7 @@
         </tr>
     </thead>
     <tbody>
-       
+        @{int i = 1;
         @foreach (var item in Model.Records.Take(3))
         {
             <tr>
@@ -48,21 +57,15 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                <td>
-                    @{
-                        int i = 1;
-                        foreach (var answer in new string[] { "a", "b", "c" })
-                        { 
-                             <img class=imgS src="@Url.Content(string.Format("~/{0}.jpg", @i++))"  alt = "question"/> 
-                             @Html.Display(answer) 
-                              <br/> 
-                         }
-                    }
+                <td>  
+                <img class=imgS src="@Url.Content(string.Format("~/{0}.jpg", @i++))"  alt = "question"/> 
+                    
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>            
             </tr>
+        }
         }
     </tbody>
 </table>
