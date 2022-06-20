@@ -4,6 +4,15 @@
     ViewData["Title"] = "MENU";
 }
 
+<head>
+    <style>
+        .imgS {
+            max-width: 50%;
+            height: auto;
+        }
+    </style>
+</head>
+
 <div class="text-left">
     <h1>MENU</h1>
 
@@ -19,6 +28,9 @@
                 <p><strong>Opis</strong></p>
             </th>
             <th>
+                <p><strong>Zdjęcie</strong></p>
+            </th>
+            <th>
                 <p><strong>Cena</strong></p>
             </th>
 
@@ -26,7 +38,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Records)
+       
+        @foreach (var item in Model.Records.Take(3))
         {
             <tr>
                 <td>
@@ -34,6 +47,17 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @{
+                        int i = 1;
+                        foreach (var answer in new string[] { "a", "b", "c" })
+                        { 
+                             <img class=imgS src="@Url.Content(string.Format("~/{0}.jpg", @i++))"  alt = "question"/> 
+                             @Html.Display(answer) 
+                              <br/> 
+                         }
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
