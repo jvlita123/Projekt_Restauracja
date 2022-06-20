@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Projekt_Restauracja;
 using Projekt_Restauracja.Data;
 
-namespace Projekt_Restauracja.Pages.MenuDish
+namespace Projekt_Restauracja.Pages.AddCategoryGroup
 {
     [Authorize(Policy = "Admin")]
     public class CreateModel : PageModel
@@ -23,11 +23,13 @@ namespace Projekt_Restauracja.Pages.MenuDish
 
         public IActionResult OnGet()
         {
+        ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id");
+        ViewData["DishId"] = new SelectList(_context.Dish, "Id", "Id");
             return Page();
         }
 
         [BindProperty]
-        public Dish Dish { get; set; }
+        public CategoryGroup CategoryGroup { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -37,7 +39,7 @@ namespace Projekt_Restauracja.Pages.MenuDish
                 return Page();
             }
 
-            _context.Dish.Add(Dish);
+            _context.CategoryGroup.Add(CategoryGroup);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

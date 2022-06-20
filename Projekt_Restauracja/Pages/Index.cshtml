@@ -36,7 +36,7 @@
         #dziecko2 {
             float: left;
             width: 40%;
-            height: 100px;
+            height: 400px;
         }
         #opis{
             font-size: 20px;
@@ -56,10 +56,7 @@
 
 
 <p id="opis">
-     "Restauracja Zagłoba to wyjątkowe miejsce ulokowane w sercu Kamiennej Góry. Na dwóch stylowo urządzonych 
-    serwujemy szereg klasycznych polskich potraw, które łączą kulinarną wiedzę naszego szefa kuchni ze świeżymi sezonowymi składnikami. 
-    W nasszym menu znajdą państwo dania na każdą okazję, od specjalnych rocznic po spotkania okolicznościowe lub po prostu wspaniały obiad z rodziną. 
-    Dążymy do tego, aby stworzyć atrakcyjne wrażenia smakowe dla każdego z naszych gości."
+   @Model.Restaurants[0].Description.
 </p>
 <div id="rodzic">
     <div id="dziecko1">
@@ -77,4 +74,13 @@
     <div id="dziecko2">
         <img class="imgS" src="~/menu.jpg" alt="jpg" />
     </div>
+
 </div>
+<strong><i>__Dane Kontaktowe__</i></strong>
+<p>
+    <em>
+        email
+    </em>
+    @Model.Restaurants[0].ContactEmail
+
+</p>
