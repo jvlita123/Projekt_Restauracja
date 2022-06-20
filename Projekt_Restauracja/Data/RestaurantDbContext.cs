@@ -12,11 +12,13 @@ namespace Projekt_Restauracja.Data
             : base(options)
         {
         }
+        public DbSet<Image> Images { get; set; }
+
         public DbSet<Announcement> Announcements { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Dish> Dish { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
+      //  public DbSet<Role> Roles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -25,9 +27,7 @@ namespace Projekt_Restauracja.Data
                 .Property(u => u.email)
                 .IsRequired();
 
-            modelBuilder.Entity<Role>()
-              .Property(u => u.Name)
-              .IsRequired();
+          
 
 
 

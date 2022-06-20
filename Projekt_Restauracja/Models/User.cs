@@ -24,11 +24,14 @@ namespace Projekt_Restauracja
         public string Surname { get; set; }
         public string Password { get; set; }
         public string ConfrimPassword { get; set; }
-        public int RoleId { get; set; }
+    //    public int RoleId { get; set; }
 
-        public virtual IdentityRole Role { get; set; }
+    //    public virtual IdentityRole Role { get; set; }
         public string PasswordHash { get; set; }
 
-     
+        [Display(Name = "Zdjêcia")]
+        public virtual ICollection<Image>? Images { get; set; }
+
+
     }
 }

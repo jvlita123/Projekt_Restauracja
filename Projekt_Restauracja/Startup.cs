@@ -39,6 +39,15 @@ namespace Projekt_Restauracja
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy => policy.RequireUserName("AdminNew@wp.pl"));
+            });
+
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddControllers().AddFluentValidation();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

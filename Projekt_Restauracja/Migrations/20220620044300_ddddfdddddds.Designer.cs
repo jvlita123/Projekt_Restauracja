@@ -3,21 +3,42 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Projekt_Restauracja.Data;
 
 namespace Projekt_Restauracja.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220620044300_ddddfdddddds")]
+    partial class ddddfdddddds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentityRole");
+                });
 
             modelBuilder.Entity("Projekt_Restauracja.Announcement", b =>
                 {
@@ -100,29 +121,20 @@ namespace Projekt_Restauracja.Migrations
                     b.ToTable("Dish");
                 });
 
-            modelBuilder.Entity("Projekt_Restauracja.Image", b =>
+            modelBuilder.Entity("Projekt_Restauracja.Models.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<byte[]>("Data")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<int>("DishId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DishId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Images");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Projekt_Restauracja.Restaurant", b =>
@@ -168,6 +180,12 @@ namespace Projekt_Restauracja.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoleId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Surname")
                         .HasColumnType("varchar(100)");
 
@@ -179,6 +197,8 @@ namespace Projekt_Restauracja.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoleId1");
 
                     b.ToTable("Users");
                 });
@@ -209,19 +229,13 @@ namespace Projekt_Restauracja.Migrations
                         .HasForeignKey("RestaurantId");
                 });
 
-            modelBuilder.Entity("Projekt_Restauracja.Image", b =>
+            modelBuilder.Entity("Projekt_Restauracja.User", b =>
                 {
-                    b.HasOne("Projekt_Restauracja.Dish", "Dish")
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", "Role")
                         .WithMany()
-                        .HasForeignKey("DishId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId1");
 
-                    b.HasOne("Projekt_Restauracja.User", null)
-                        .WithMany("Images")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Dish");
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("Projekt_Restauracja.Category", b =>
@@ -237,11 +251,6 @@ namespace Projekt_Restauracja.Migrations
             modelBuilder.Entity("Projekt_Restauracja.Restaurant", b =>
                 {
                     b.Navigation("Dishes");
-                });
-
-            modelBuilder.Entity("Projekt_Restauracja.User", b =>
-                {
-                    b.Navigation("Images");
                 });
 #pragma warning restore 612, 618
         }

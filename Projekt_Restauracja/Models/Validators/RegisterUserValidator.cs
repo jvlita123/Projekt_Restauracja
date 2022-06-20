@@ -38,6 +38,7 @@ namespace Projekt_Restauracja.Models.Validators
                     {
                         context.AddFailure("Email", "Ten adres e-mail jest zajety"); 
                     }
+
                 });
         }
 

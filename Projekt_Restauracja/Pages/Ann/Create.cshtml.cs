@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,8 @@ using Projekt_Restauracja.Data;
 
 namespace Projekt_Restauracja.Pages.Ann
 {
+    [Authorize(Policy = "Admin")]
+
     public class CreateModel : PageModel
     {
         private readonly Projekt_Restauracja.Data.RestaurantDbContext _context;

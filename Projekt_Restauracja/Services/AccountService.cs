@@ -24,8 +24,7 @@ namespace Projekt_Restauracja.Services
             {
                 email = user.email,
                 Year = user.Year,
-                Role = new IdentityRole("Admin"),
-                RoleId = user.RoleId,
+              
 
             };
 
